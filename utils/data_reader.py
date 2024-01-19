@@ -125,14 +125,14 @@ def read_langs(vocab):
 
 
 def load_dataset():
-    if(os.path.exists('empathetic-dialogue/dataset_preproc.p')):
+    if(os.path.exists('../drive/MyDrive/empathetic-dialogue/dataset_preproc.p')):
         print("LOADING empathetic_dialogue")
-        with open('empathetic-dialogue/dataset_preproc.p', "rb") as f:
+        with open('../drive/MyDrive/empathetic-dialogue/dataset_preproc.p', "rb") as f:
             [data_tra, data_val, data_tst, vocab] = pickle.load(f)
     else:
         print("Building dataset...")
         data_tra, data_val, data_tst, vocab  = read_langs(vocab=Lang({config.UNK_idx: "UNK", config.PAD_idx: "PAD", config.EOS_idx: "EOS", config.SOS_idx: "SOS", config.USR_idx:"USR", config.SYS_idx:"SYS", config.CLS_idx:"CLS"})) 
-        with open('empathetic-dialogue/dataset_preproc.p', "wb") as f:
+        with open('../drive/MyDrive/empathetic-dialogue/dataset_preproc.p', "wb") as f:
             pickle.dump([data_tra, data_val, data_tst, vocab], f)
             print("Saved PICKLE")
     for i in range(3):
